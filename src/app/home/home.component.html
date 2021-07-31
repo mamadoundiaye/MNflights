@@ -1,1 +1,8 @@
-<p>home works!</p>
+<p>home works! great angular is amazing </p>
+
+<div *ngFor="let flight of flights" class="flight_results">
+<div class="flight_number"> {{flight.flightNumber}}</div>
+<div class="departs"> {{flight.depart | date}}</div><!-- *| filtres * -->
+<div class="arrives"> {{flight.arrive | date}}</div>
+<div class="nonstop"> {{flight.nonstop}}</div>
+</div>
