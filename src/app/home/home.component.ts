@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FlightsService } from './flights.service';
+import { FlightsService } from '../flights.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
 
   getFlights(){
-    
+
   }
 
 }
