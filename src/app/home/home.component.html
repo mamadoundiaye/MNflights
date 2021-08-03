@@ -29,13 +29,19 @@
         </div>
         <div class="flight_pane">
           <div class="flight_headers">
+              <div class="nonstop cell"> id </div>
             <div class="flight_number cell"> Flight # </div>
+            <div class="nonstop cell"> Origine </div>
+            <div class="nonstop cell"> Destination </div>
             <div class="departs cell"> Departs </div>
             <div class="arrives cell"> Arrives </div>
             <div class="nonstop cell"> Nonstop </div>
           </div>
 
           <div *ngFor="let flight of flights" class="flight_results">
+            <div class="id cell"> {{flight.id}}</div>
+            <div class="flight_origin cell"> {{flight.origin}}</div>
+            <div class="flight_destination cell"> {{flight.destination}}</div>
             <div class="flight_number cell"> {{flight.flightNumber}}</div>
             <div class="departs cell"> {{flight.depart | date : 'shortDate' }}</div>
             <div class="arrives cell"> {{flight.arrive | date : 'shortDate' }}</div>
