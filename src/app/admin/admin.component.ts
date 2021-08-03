@@ -11,6 +11,8 @@ export class AdminComponent implements OnInit {
 
   constructor(private flightService: FlightsService) { }
 
+  loading = true;
+
   id: number = 25;
   origin: string = "nn";
   destination: string = "nnn";
@@ -18,9 +20,11 @@ export class AdminComponent implements OnInit {
   depart: Date =  new Date("2019-01-16");
   arrive: Date = new Date("2019-01-16");
   nonstop: boolean = false;
+  flightList: any[]=[];
 
   ngOnInit(): void {
-  }
+   this.refresh();
+ }
 
   toggleNonStop(){
     this.nonstop = !this.nonstop;
@@ -38,6 +42,33 @@ export class AdminComponent implements OnInit {
     }
     this.flightService.postFlight(flight);
 
+  }
+
+  refresh(){
+    this.loading = true;
+    this.flightService.getAllFlights().subscribe(data =>{
+      this.flightList = data;
+      this.loading = false;
+    })
+  }
+
+ update(flight:Flight){
+  this.flightService.updateFlight(flight).subscribe(data =>{
+    console.log('data is', data);
+    if(true){
+      this.refresh();
+    }
+  });
+}
+
+delete(flight:Flight){
+    if (window.confirm('are you sure you want to delete this flight? ')){
+      this.flightService.deleteFlight(flight.id).subscribe(data =>{
+        if(true){
+          this.refresh();
+        }
+      });
+    }
   }
 
 }

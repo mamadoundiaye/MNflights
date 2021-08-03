@@ -11,6 +11,10 @@ export class FlightsService {
   constructor(private http: HttpClient) { }
 
 
+  getAllFlights(): Observable<any> {
+    return this.http.get(`http://localhost:3000/flights`);
+  }
+
   getFlights(orig: string, dest: string): Observable<any> {
     return this.http.get(`http://localhost:3000/flights/query/${orig}/${dest}`);
   }
@@ -29,7 +33,13 @@ export class FlightsService {
     return this.http.get(`http://localhost:3000/flights/cities/destinations`);
   }
 
+  updateFlight(flight: Flight) {
+    return this.http.post(`http://localhost:3000/flights/${flight.id}/update`,flight);
+  }
+
+
   deleteFlight(id: number) {
+    return this.http.post(`http://localhost:3000/flights/${id}/delete`,null);
 
   }
 
